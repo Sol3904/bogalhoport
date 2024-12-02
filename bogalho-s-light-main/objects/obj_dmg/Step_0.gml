@@ -7,7 +7,7 @@ var outro = instance_place(x,y,obj_entity);
 //se eu estou a tocar em alguem
 if (outro)
 {
-	show_debug_message("Colisão com inimigo ID: " + string(outro.id));
+	//show_debug_message("Colisão com inimigo ID: " + string(outro.id));
 	//se eu nao estou a tocar no meu pai
 	if(outro.id != pai)
 	{
@@ -20,7 +20,7 @@ if (outro)
 			outro.state = "hit";
 			outro.image_index = 0;
 			outro.vida_atual -= dmg;
-			show_debug_message("Dano aplicado! Vida restante: " + string(outro.vida_atual));
+			//show_debug_message("Dano aplicado! Vida restante: " + string(outro.vida_atual));
 			instance_destroy();
 			}
 		}

@@ -2,7 +2,7 @@ function load_player_data() {
     show_debug_message("Função load_player_data chamada");
 
     // Inicializa player_data com valores padrão, caso ainda não tenha sido inicializado
-    if (is_undefined(player_data)) {
+    if (!variable_global_exists("player_data")) {
         player_data = {
             "states": [],
             "change_count": 0,

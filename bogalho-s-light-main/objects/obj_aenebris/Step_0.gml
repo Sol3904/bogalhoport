@@ -1,67 +1,60 @@
 // Verifica se player_data foi carregado corretamente
-if (is_undefined(player_data)) {
-    load_player_data();  // Tenta carregar os dados se não estiverem carregados
+if (is_undefined(player_data) || !is_struct(player_data)) {
+    show_debug_message("player_data não carregado corretamente, tentando carregar...");
+    load_player_data();
 }
 
 // Garante que player_data.state_counts está correto
+if (is_undefined(player_data.state_counts) || !is_array(player_data.state_counts)) {
+    player_data.state_counts = array_create(7, 0);  // Inicializa com 7 contadores
+}
+
+// Verifica se state_counts tem pelo menos 7 elementos
 if (is_array(player_data.state_counts) && array_length(player_data.state_counts) >= 7) {
-    // Determina o comportamento do inimigo com base nos estados do jogador
-    if (player_data.state_counts[3] > player_data.state_counts[1]) {
-        // Comportamento defensivo se o jogador atacou mais
+    // Compara os contadores de estados para determinar o comportamento do inimigo
+    if (player_data.state_counts[3] > player_data.state_counts[1]) {  // Atacando mais que correndo
         enemy_behavior = "defensive";
-    } else if (player_data.state_counts[4] > player_data.state_counts[2]) {
-        // Comportamento ofensivo se o jogador usou mais o "dash"
+    } else if (player_data.state_counts[4] > player_data.state_counts[2]) {  // Usando dash mais que atacando
         enemy_behavior = "offensive";
     } else {
-        // Comportamento padrão (neutro) caso o jogador não tenha se concentrado em nenhum dos dois
         enemy_behavior = "normal";
     }
 } else {
-    // Caso state_counts não tenha sido configurado corretamente, o inimigo terá comportamento padrão
-    show_debug_message("Erro: player_data ou state_counts não está configurado corretamente.");
-    enemy_behavior = "normal";  // Comportamento padrão
+    show_debug_message("Erro: state_counts inválido. Dados: " + string(player_data.state_counts));
+    enemy_behavior = "normal";  // Comportamento padrão em caso de erro
 }
 
-// Comportamento do inimigo (movimento e colisão)
+// Comportamento do inimigo com base no "enemy_behavior"
 switch (enemy_behavior) {
     case "defensive":
-        // Comportamento defensivo: move-se de forma cautelosa, não se aproxima demais do jogador
-        hspd = 0;  // Inimigo não se move ofensivamente
-        vspd = 0;  // Inimigo fica parado em sua posição
+        hspd = 0; 
+        vspd = 0;
         break;
 
     case "offensive":
-        // Comportamento ofensivo: move-se em direção ao jogador
-        var player_distance = player.x - x; // Calcula a distância do jogador
-        if (player_distance > 0) {
-            hspd = 4;  // Move-se para a direita
-        } else {
-            hspd = -4;  // Move-se para a esquerda
-        }
-        vspd = 0;  // Sem movimento vertical
+        // Verifica a distância até o jogador para ajustar a movimentação
+        var player_distance = instance_exists(obj_player) ? (player.x - x) : 0;
+        hspd = player_distance > 0 ? 4 : -4;
+        vspd = 0;
         break;
 
     case "normal":
-        // Comportamento padrão: patrulha normalmente (sem agir de forma ofensiva ou defensiva)
-        hspd = 2;  // Movimenta-se em uma velocidade padrão
-        vspd = 0;  // Sem movimento vertical
+        hspd = 2; 
+        vspd = 0;
         break;
 }
 
-// Movimentação do inimigo: Verifica colisão com parede
-if (place_meeting(x + hspd, y, obj_block)) {
-    hspd = 0;  // Para o movimento horizontal se houver colisão com a parede
+// Movimentação e colisão
+if (instance_exists(obj_block) && place_meeting(x + hspd, y, obj_block)) {
+    hspd = 0;  // Impede movimento caso haja colisão com objeto 'obj_block'
 }
 
-// Aplica a movimentação do inimigo
-move_contact_solid(hspd, vspd);
+move_contact_solid(hspd, vspd);  // Movimenta o inimigo respeitando colisões com objetos sólidos
 
-// Detecta se o inimigo está perto do jogador (exemplo de uma interação ou proximidade)
-if (distance_to_object(obj_player) < 100) {
-    // O inimigo pode começar a atacar ou seguir o jogador se estiver muito próximo
-    // Aqui você pode adicionar comportamento adicional, como um ataque ou ação especial
+// Proximidade com o jogador
+if (instance_exists(obj_player) && distance_to_object(obj_player) < 100) {
     if (enemy_behavior == "offensive") {
-        // Atacar ou agir de forma agressiva
-        // Exemplo: Iniciar animação de ataque ou fazer o inimigo causar dano ao jogador
+        // Adicionar lógica de ataque
+        // Aqui você pode adicionar a lógica do ataque, como aumentar o dano ou invocar um ataque específico
     }
 }
