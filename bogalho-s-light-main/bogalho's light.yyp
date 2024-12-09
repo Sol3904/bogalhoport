@@ -62,6 +62,7 @@
     {"id":{"name":"obj_sensor_church","path":"objects/obj_sensor_church/obj_sensor_church.yy",},},
     {"id":{"name":"obj_sensor_dungeon","path":"objects/obj_sensor_dungeon/obj_sensor_dungeon.yy",},},
     {"id":{"name":"obj_spectre","path":"objects/obj_spectre/obj_spectre.yy",},},
+    {"id":{"name":"Aenebris_testing","path":"rooms/Aenebris_testing/Aenebris_testing.yy",},},
     {"id":{"name":"Church","path":"rooms/Church/Church.yy",},},
     {"id":{"name":"Dungeon","path":"rooms/Dungeon/Dungeon.yy",},},
     {"id":{"name":"Intro","path":"rooms/Intro/Intro.yy",},},
@@ -119,6 +120,7 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
+    {"roomId":{"name":"Aenebris_testing","path":"rooms/Aenebris_testing/Aenebris_testing.yy",},},
     {"roomId":{"name":"Intro","path":"rooms/Intro/Intro.yy",},},
     {"roomId":{"name":"Dungeon","path":"rooms/Dungeon/Dungeon.yy",},},
     {"roomId":{"name":"Church","path":"rooms/Church/Church.yy",},},

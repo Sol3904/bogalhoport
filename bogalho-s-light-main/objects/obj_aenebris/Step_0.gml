@@ -1,3 +1,9 @@
+// Verifica se o objeto existe e posiciona no centro da sala
+if (instance_exists(obj_aenebris)) {
+    x = room_width / 2; // Coloca o objeto no centro da sala
+    y = room_height / 2;
+}
+
 // Verifica se player_data foi carregado corretamente
 if (is_undefined(player_data) || !is_struct(player_data)) {
     show_debug_message("player_data não carregado corretamente, tentando carregar...");
@@ -24,32 +30,25 @@ if (is_array(player_data.state_counts) && array_length(player_data.state_counts)
     enemy_behavior = "normal";  // Comportamento padrão em caso de erro
 }
 
-// Comportamento do inimigo com base no "enemy_behavior"
+// Define a velocidade inicial horizontal baseada no comportamento
 switch (enemy_behavior) {
-    case "defensive":
-        hspd = 0; 
-        vspd = 0;
+    case "defensive": 
+        velh = 0; 
         break;
-
-    case "offensive":
-        // Verifica a distância até o jogador para ajustar a movimentação
-        var player_distance = instance_exists(obj_player) ? (player.x - x) : 0;
-        hspd = player_distance > 0 ? 4 : -4;
-        vspd = 0;
+    case "offensive": 
+        velh = 4; 
         break;
-
-    case "normal":
-        hspd = 2; 
-        vspd = 0;
+    case "normal": 
+        velh = 2; 
         break;
 }
 
 // Movimentação e colisão
-if (instance_exists(obj_block) && place_meeting(x + hspd, y, obj_block)) {
-    hspd = 0;  // Impede movimento caso haja colisão com objeto 'obj_block'
+if (instance_exists(obj_block) && place_meeting(x + velh, y, obj_block)) {
+    velh = 0;  // Impede movimento caso haja colisão com objeto 'obj_block'
 }
 
-move_contact_solid(hspd, vspd);  // Movimenta o inimigo respeitando colisões com objetos sólidos
+move_contact_solid(velh, velv);  // Movimenta o inimigo respeitando colisões com objetos sólidos
 
 // Proximidade com o jogador
 if (instance_exists(obj_player) && distance_to_object(obj_player) < 100) {
