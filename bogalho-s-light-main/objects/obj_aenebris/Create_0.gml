@@ -1,10 +1,12 @@
+event_inherited()
+
 // Inicializa as variáveis de velocidade
 velh = 0;  // Velocidade horizontal (inicializada no Create)
 velv = 0;  // Velocidade vertical (inicializada no Create)
 
 // Garantir que o objeto esteja visível
 visible = true;
-show_debug_message("obj_aenebris Create event started.");
+//show_debug_message("obj_aenebris Create event started.");
 
 // Limitar a posição dentro dos limites da sala
 x = clamp(x, 0, room_width);  // Ajusta a posição X dentro dos limites
@@ -14,8 +16,8 @@ y = clamp(y, 0, room_height);  // Ajusta a posição Y dentro dos limites
 enemy_behavior = "normal";  // Valor padrão para evitar acesso a variáveis indefinidas
 
 // Mensagens de depuração
-show_debug_message("Inicializando obj_aenebris");
-show_debug_message("Comportamento inicial do inimigo: " + string(enemy_behavior));
+//show_debug_message("Inicializando obj_aenebris");
+//show_message("Comportamento inicial do inimigo: " + string(enemy_behavior));
 
 // Definir limites de comportamento
 attack_threshold = 5.0;  
@@ -32,4 +34,6 @@ velh = clamp(velh, -2, 2);  // Reduz a velocidade horizontal para um intervalo s
 can_move = true;
 
 // Mensagens de depuração
-show_debug_message("obj_aenebris posição - X: " + string(x) + ", Y: " + string(y));
+//show_debug_message("obj_aenebris posição - X: " + string(x) + ", Y: " + string(y));
+
+

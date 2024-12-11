@@ -11,5 +11,5 @@ var espaco = keyboard_check_released(ord("E"));
 //esta
 if(player && espaco)
 {
-	room_goto(Church)
+	room_goto(Aenebris_testing)
 }

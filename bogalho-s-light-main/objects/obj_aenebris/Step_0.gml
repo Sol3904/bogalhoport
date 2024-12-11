@@ -1,7 +1,18 @@
-// Verifica se o objeto existe e posiciona no centro da sala
-if (instance_exists(obj_aenebris)) {
-    x = room_width / 2; // Coloca o objeto no centro da sala
-    y = room_height / 2;
+
+
+// Verifica se o jogador existe e cria o objeto 'obj_aenebris' nas mesmas coordenadas do jogador
+if (instance_exists(obj_player)) {
+    if (!instance_exists(obj_aenebris)) {
+        // Cria o 'obj_aenebris' nas coordenadas do 'obj_player'
+        var aenebris = instance_create_layer(obj_player.x, obj_player.y, "Instances", obj_aenebris);
+        //show_debug_message("obj_aenebris criado nas coordenadas do jogador.");
+    } else {
+        // Caso o 'obj_aenebris' já exista, atualiza sua posição para as do 'obj_player'
+        with (obj_aenebris) {
+            x = obj_player.x;
+            y = obj_player.y;
+        }
+    }
 }
 
 // Verifica se player_data foi carregado corretamente
@@ -22,9 +33,7 @@ if (is_array(player_data.state_counts) && array_length(player_data.state_counts)
         enemy_behavior = "defensive";
     } else if (player_data.state_counts[4] > player_data.state_counts[2]) {  // Usando dash mais que atacando
         enemy_behavior = "offensive";
-    } else {
-        enemy_behavior = "normal";
-    }
+    } 
 } else {
     show_debug_message("Erro: state_counts inválido. Dados: " + string(player_data.state_counts));
     enemy_behavior = "normal";  // Comportamento padrão em caso de erro
@@ -33,13 +42,13 @@ if (is_array(player_data.state_counts) && array_length(player_data.state_counts)
 // Define a velocidade inicial horizontal baseada no comportamento
 switch (enemy_behavior) {
     case "defensive": 
-        velh = 0; 
+        show_debug_message("state defensive") 
         break;
     case "offensive": 
-        velh = 4; 
+        show_debug_message("state offensive")
         break;
     case "normal": 
-        velh = 2; 
+        show_debug_message("state normal") 
         break;
 }
 

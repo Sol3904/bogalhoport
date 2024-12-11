@@ -1,5 +1,5 @@
 function save_player_data() {
-    show_debug_message("Função save_player_data chamada");
+    //show_debug_message("Função save_player_data chamada");
 
     // Cria um objeto temporário como cópia de player_data
     var temp_data = player_data; // Usa uma referência direta (simples)
@@ -22,5 +22,5 @@ function save_player_data() {
     file_text_write_string(file, json_data);
     file_text_close(file);
 
-    show_debug_message("Arquivo salvo com sucesso em: " + file_path);
+    //show_debug_message("Arquivo salvo com sucesso em: " + file_path);
 }

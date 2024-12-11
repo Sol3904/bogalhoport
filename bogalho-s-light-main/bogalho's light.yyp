@@ -120,8 +120,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Aenebris_testing","path":"rooms/Aenebris_testing/Aenebris_testing.yy",},},
     {"roomId":{"name":"Intro","path":"rooms/Intro/Intro.yy",},},
+    {"roomId":{"name":"Aenebris_testing","path":"rooms/Aenebris_testing/Aenebris_testing.yy",},},
     {"roomId":{"name":"Dungeon","path":"rooms/Dungeon/Dungeon.yy",},},
     {"roomId":{"name":"Church","path":"rooms/Church/Church.yy",},},
     {"roomId":{"name":"Revive","path":"rooms/Revive/Revive.yy",},},

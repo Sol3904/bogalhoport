@@ -1,9 +1,6 @@
 // Função para mudar de estado
 function change_state(new_state) {
-    show_debug_message("Função change_state chamada com o novo estado: " + new_state);
-	
-	show_debug_message("Estado atual de player_data: " + string(player_data));
-    show_debug_message("Estado atual de state_counts: " + string(state_counts));
+    //show_debug_message("Função change_state chamada com o novo estado: " + new_state);
 
 
     if (state != new_state) {
