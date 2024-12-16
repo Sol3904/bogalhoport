@@ -31,8 +31,8 @@
   ],
   "name":"Aenebris_testing",
   "parent":{
-    "name":"Cenas",
-    "path":"folders/Cenas.yy",
+    "name":"campaign",
+    "path":"folders/Cenas/campaign.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
