@@ -1,39 +1,42 @@
-event_inherited()
+event_inherited(); // Garante que as variáveis do obj_entity sejam inicializadas
 
-// Inicializa as variáveis de velocidade
-velh = 0;  // Velocidade horizontal (inicializada no Create)
-velv = 0;  // Velocidade vertical (inicializada no Create)
+// Ajuste de atributos herdados
+max_vida = 10;      // Redefine a vida máxima para este tipo de inimigo
+vida_atual = max_vida; // Inicializa a vida atual com o valor máximo
 
-// Garantir que o objeto esteja visível
-visible = true;
-//show_debug_message("obj_aenebris Create event started.");
+max_velh = 2;       // Redefine a velocidade horizontal máxima para o inimigo
+max_velv = 3;       // Redefine a velocidade vertical máxima (se aplicável)
+massa = 2;          // Define a massa do inimigo para cálculos de física
+ataque = 5;         // Ajusta o dano causado pelo inimigo
+state = "idle";     // Garante que o estado inicial é ocioso
 
-// Limitar a posição dentro dos limites da sala
-x = clamp(x, 0, room_width);  // Ajusta a posição X dentro dos limites
-y = clamp(y, 0, room_height);  // Ajusta a posição Y dentro dos limites
+// Variáveis específicas do obj_aenebris
+reaction_delay = 0; // Delay de reação inicial
+can_react = true;   // Se o inimigo pode reagir imediatamente
+enemy_behavior = "idle"; // Define um comportamento padrão para complementar o estado
 
-// Inicializa as variáveis locais
-enemy_behavior = "normal";  // Valor padrão para evitar acesso a variáveis indefinidas
+// Configurações de patrulha
+left_bound = 100;       // Limite esquerdo de patrulha
+right_bound = 500;      // Limite direito de patrulha
+patrol_speed = 1;       // Velocidade ao patrulhar
 
-// Mensagens de depuração
-//show_debug_message("Inicializando obj_aenebris");
-//show_message("Comportamento inicial do inimigo: " + string(enemy_behavior));
+// Configurações de ataque
+attack_range = 50;      // Distância mínima para iniciar um ataque
+vision_range = 300;     // Alcance de visão do inimigo
+attack_cooldown = room_speed; // Tempo entre ataques
+attack_timer = 0;       // Inicializa o contador de ataque
 
-// Definir limites de comportamento
-attack_threshold = 5.0;  
-dash_threshold = 5.0;
+// Esquiva e comportamento
+evade_range = 40;       // Distância mínima para esquivar
+follow_speed = 2;       // Velocidade ao seguir o jogador
+evade_speed = 5;        // Velocidade ao esquivar
 
-// Limites de patrulha e movimento
-left_bound = 100;   
-right_bound = 500;  
+// Referência ao jogador
+target_player = obj_player; // Define o jogador como alvo do inimigo
 
-// Limita a velocidade para evitar movimento rápido
-velh = clamp(velh, -2, 2);  // Reduz a velocidade horizontal para um intervalo seguro
+// Configurações de movimento
+velh = clamp(velh, -max_velh, max_velh); // Garante que a velocidade inicial esteja dentro do limite
+can_move = true;          // Flag para controle de movimento
 
-// Flags de colisão e movimento
-can_move = true;
-
-// Mensagens de depuração
-//show_debug_message("obj_aenebris posição - X: " + string(x) + ", Y: " + string(y));
-
-
+// Alarmes
+alarm[0] = -1;  // Configura o alarme para atrasar ações ou reações
