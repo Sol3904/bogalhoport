@@ -111,4 +111,22 @@ switch (state) {
         velv = 0;
         break;
     }
+	case "hit":
+	{
+		velh = 0;
+		
+		 show_message("Inimigo atingido! Vida atual: " + string(vida_atual));
+		
+		//sair do hit
+		
+		//if(image_index > image_number-1)
+		//{
+			//vida restante?
+			if(vida_atual > 0)
+			{
+			   state = "idle";
+			}
+		//}
+		break;
+	}
 }
