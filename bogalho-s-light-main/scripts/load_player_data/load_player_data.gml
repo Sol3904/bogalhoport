@@ -1,60 +1,54 @@
 function load_player_data() {
-    show_debug_message("Função load_player_data chamada");
-
-    // Inicializa player_data com valores padrão, caso ainda não tenha sido inicializado
-    if (!variable_global_exists("player_data")) {
+    var file_path = working_directory + "player_data.json";
+    
+    // Tenta abrir o arquivo para leitura
+    var file = file_text_open_read(file_path);
+    if (file == -1) {
+        show_debug_message("Erro ao abrir o arquivo para leitura. Usando valores padrão.");
+        
+        // Se o arquivo não for encontrado ou estiver com erro, inicialize com valores padrão
         player_data = {
-            "states": [],
             "change_count": 0,
-            "state_counts": array_create(7, 0)  // Inicializa com 7 contadores (correspondendo aos 7 estados)
+            "state": {
+                "x": 356, // Posição X padrão
+                "y": 291, // Posição Y padrão
+                "hp": 5   // HP padrão
+            }
         };
+        return;
     }
 
-    // Verifica se o arquivo existe
-    if (file_exists("player_data.json")) {
-        var file = file_text_open_read("player_data.json");
-        var json_string = file_text_read_string(file);
-        file_text_close(file);
+    // Lê o conteúdo do arquivo e converte para JSON
+    var json_data = file_text_read_string(file);
+    file_text_close(file);
+    
+    // Exibe o conteúdo lido do arquivo
+    show_debug_message("Conteúdo do arquivo JSON: " + json_data);
 
-        var loaded_data = json_decode(json_string);
-
-        // Verifica se a estrutura carregada é válida
-        if (is_struct(loaded_data)) {
-            // Sobrescreve os campos existentes nos dados carregados
-
-            // Carrega states (histórico de estados)
-            if (is_array(loaded_data.states)) {
-                player_data.states = loaded_data.states;
-            }
-
-            // Carrega o contador de mudanças (garante que seja inteiro)
-            if (!is_undefined(loaded_data.change_count)) {
-                player_data.change_count = int(loaded_data.change_count);
-            }
-
-            // Carrega os contadores de estado, garantindo que o array tenha pelo menos 7 elementos (um para cada estado)
-            if (is_array(loaded_data.state_counts)) {
-                for (var i = 0; i < array_length(player_data.state_counts); i++) {
-                    // Converte para inteiro os valores de state_counts, pois o JSON os carrega como flutuantes
-                    player_data.state_counts[i] = int(loaded_data.state_counts[i]);
-                }
-            } else {
-                // Se a estrutura "state_counts" não estiver correta, inicializa com valores padrão
-                player_data.state_counts = array_create(7, 0);  // Garante que tenhamos 7 contadores
-            }
-        } else {
-            show_debug_message("Erro: O arquivo JSON não contém uma estrutura válida.");
-        }
+    // Tenta interpretar o JSON
+    var loaded_data = json_parse(json_data);
+    
+    // Verifica se o JSON foi carregado corretamente
+    if (is_struct(loaded_data) && is_struct(loaded_data.state)) {
+        show_debug_message("Estado carregado: x=" + string(loaded_data.state.x) + ", y=" + string(loaded_data.state.y) + ", hp=" + string(loaded_data.state.hp));
+        
+        player_data = loaded_data;
+        
+        // Atualiza as variáveis de estado com os valores carregados
+        x = player_data.state.x != undefined ? player_data.state.x : 356;
+        y = player_data.state.y != undefined ? player_data.state.y : 291;
+        vida_atual = player_data.state.hp != undefined ? player_data.state.hp : vida_atual;
     } else {
-        // Se o arquivo não for encontrado, use valores padrão
-        show_debug_message("Arquivo player_data.json não encontrado. Usando valores padrão.");
+        show_debug_message("Erro: O arquivo JSON não contém uma estrutura válida.");
+        
+        // Se o JSON estiver incorreto, use valores padrão
         player_data = {
-            "states": [],
             "change_count": 0,
-            "state_counts": array_create(7, 0)  // Inicializa com 7 contadores (correspondendo aos 7 estados)
+            "state": {
+                "x": 356, // Posição X padrão
+                "y": 291, // Posição Y padrão
+                "hp": 5   // HP padrão
+            }
         };
     }
-
-    // Depois de carregar ou inicializar, verifica se a estrutura está válida
-    show_debug_message("player_data carregado: " + string(player_data));
 }

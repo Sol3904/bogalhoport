@@ -1,36 +1,40 @@
-/// @description Inicialização do jogador
+// Inicialização do jogador com `x`, `y`, e `hp` em variáveis de estado
 
-event_inherited()
+event_inherited();
 
 // Configurações iniciais
 randomize();
 
-// Inicialização explícita de state_names (array de estados)
-state_names = ["idle", "moving", "jumping", "attacking", "dash", "hit", "dead"];
-state_counts = array_create(array_length(state_names), 0); // Array para contagem de mudanças em cada estado
-
-// Garantir que o estado inicial seja válido
-state = "idle";
-if (array_index(state_names, state) == -1) { 
-    state = "idle"; // Define "idle" como padrão se o estado inicial for inválido
-}
-
-// Dados do jogador - inicialização explícita
-player_data = {
-    "states": [],           // Histórico de estados
-    "change_count": 0,      // Contador de mudanças de estado
-    "state_counts": []      // Inicializa como vazio (não usado diretamente)
+// Inicialização explícita de player_attributes (atributos do jogador)
+player_attributes = ["x", "y", "hp"]; // Atributos monitorados
+player_state = {
+    x: 356,                      // Posição X inicial (alterado para 356)
+    y: 291,                      // Posição Y inicial (alterado para 291)
+    hp: vida_atual               // Vida inicial
 };
 
-// Carregar os dados do jogador de uma função externa (se existir)
+// Dados do jogador - inicialização explícita para salvar/carregar
+player_data = {
+    state: player_state,         // Estado inicial do jogador
+    change_count: 0              // Contador de mudanças no estado (se necessário)
+};
+
+// Carregar os dados do jogador de um arquivo JSON (se existir)
 load_player_data();
 
-// Verificação de consistência de player_data após carregamento
-if (!is_array(player_data.states)) {
-    player_data.states = []; // Corrige se o histórico de estados não for carregado corretamente
-}
-if (is_undefined(player_data.change_count)) {
-    player_data.change_count = 0; // Corrige se o contador de mudanças não for carregado corretamente
+// Atualizar variáveis locais a partir de player_data após o carregamento
+if (is_struct(player_data.state)) {
+    player_state = player_data.state; // Sincroniza os estados carregados
+    x = player_state.x;              // Use a notação de ponto para acessar 'x'
+    y = player_state.y;              // Use a notação de ponto para acessar 'y'
+    vida_atual = player_state.hp;    // Use a notação de ponto para acessar 'hp'
+} else {
+    // Corrige valores caso o JSON não esteja completo
+    player_state = {
+        x: 356,    // Posição X padrão (356)
+        y: 291,    // Posição Y padrão (291)
+        hp: vida_atual
+    };
 }
 
 // Variáveis de controle de movimento
@@ -70,7 +74,6 @@ healthbar_y = global.initial_y - 100;
 // Inicialização de outras variáveis
 xscale = 1;         // Escala horizontal inicial
 show_state = true;  // Mostrar estado para depuração
-state = "idle";     // Estado inicial definido como "idle"
 
 // Depuração - Mensagem para validar inicialização
-show_debug_message("Player criado com estado inicial: " + state);
+show_debug_message("Player criado com posição inicial: (" + string(x) + ", " + string(y) + ") e HP: " + string(vida_atual));
