@@ -1,6 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+global.data_loaded = false; // Dados ainda não carregados
+
+
 // Menu element names. This will be what is actually drawn
 menu[0] = "Campaign";
 menu[1] = "Multiplayer";

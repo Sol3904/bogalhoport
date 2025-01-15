@@ -1,21 +1,32 @@
 function save_player_data() {
-    // Criar uma cópia de player_data
-    var temp_data = {
-        "change_count": player_data.change_count,
-        "state": {
-            "x": player_data.state.x,
-            "y": player_data.state.y,
-            "hp": player_data.state.hp
-        }
-    };
+    // Cria um objeto temporário como cópia de player_data
+    var temp_data = player_data; // Usa uma referência direta (simples)
+    
+	nome_da_sala = "placeholder"
+   
 
-    // Verifique se os dados de estado estão completos
-    if (!is_struct(temp_data.state)) {
-        show_debug_message("Erro: Dados de estado incompletos!");
-        return;
-    }
-
-    // Converte o objeto para JSON
+    if(room == Intro)
+    {
+	  nome_da_sala = "Intro"
+	}
+	
+	if(room == Church)
+    {
+	  nome_da_sala = "Church"
+	}
+	
+	if(room == Revive)
+    {
+	  nome_da_sala = "Revive"
+	}
+	
+	show_message(nome_da_sala)
+	
+	 // Adiciona o nome da sala ao objeto temporário
+    temp_data.room = nome_da_sala;  // Salva a sala em que o jogador está
+	
+	
+    // Converte o objeto temporário para uma string JSON
     var json_data = json_stringify(temp_data);
     show_debug_message("JSON gerado para salvar: " + json_data);
 
@@ -29,6 +40,4 @@ function save_player_data() {
 
     file_text_write_string(file, json_data);
     file_text_close(file);
-
-    show_debug_message("Arquivo salvo com sucesso em: " + file_path);
 }

@@ -26,7 +26,24 @@ if(keyboard_check_pressed(confirmButt))
 {
 	if(selected == 0) //Campaign
 	{
-		room_goto(Intro)
+		load_player_data()
+		if(player_data.room == "Church")
+			{
+			   room_goto(Church)
+			}
+		
+		if(player_data.room == "Intro")
+			{
+			   room_goto(Intro)
+			}
+		if(player_data.room == "Placeholder")
+		{
+		   room_goto(Aenebris_testing)
+		}
+		else
+		{
+			room_goto(Intro)
+		}
 	}
 	
 	if(selected == 1) // Multi

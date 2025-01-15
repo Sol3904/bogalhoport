@@ -10,6 +10,9 @@ jump = keyboard_check(vk_space);
 attack = keyboard_check_pressed(ord("J"));
 dash = keyboard_check_pressed(ord("K"));
 
+
+
+
 if(atk_buff > 0)
 {
 	atk_buff -= 1;

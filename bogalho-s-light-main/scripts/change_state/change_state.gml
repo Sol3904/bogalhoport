@@ -9,7 +9,6 @@ function change_state(new_state) {
         // Exibe mensagem de depuração sobre a mudança
         show_debug_message("Estado alterado para: " + new_state);
 
-        // Salva os dados do jogador
-        save_player_data();
+        
     }
 }
