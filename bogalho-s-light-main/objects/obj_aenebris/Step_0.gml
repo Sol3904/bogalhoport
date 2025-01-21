@@ -23,15 +23,16 @@ y += velv;
 if (distance_to_player <= vision_range) {
     // Ajustar direção para olhar para o jogador
     if (player_x > x) {
-        image_xscale = 1;
-    } else {
         image_xscale = -1;
+    } else {
+        image_xscale = 1;
     }
 
     // Lógica de ataque
     if (distance_to_player <= attack_range && attack_timer <= 0) {
         // Inicia o ataque
         state = "attacking";
+		
         attack_timer = attack_cooldown; // Reseta o cooldown
     } 
     else if (distance_to_player > attack_range && can_move) {
@@ -62,18 +63,21 @@ if (attack_timer > 0) {
 switch (state) {
     case "attacking": {
         // Configuração de sprite de ataque
-        //sprite_index = spr_enemy_attack;
-        show_debug_message("Case attacking");
+        sprite_index = spr_aenebris_atk;
+        //show_message("Case attacking");
 
         // Lógica de dano
         if (image_index == 2 && !dano_causado) { // Supondo que o ataque cause dano no frame 2
-            with (instance_create_layer(x + image_xscale * 100, y, layer, obj_dmg)) {
-				ataque = 5;
-                dmg = ataque
-                pai = other; // Define quem causou o dano
-            }
-            dano_causado = true;
-        }
+    // Calcula a posição X baseada no tamanho do sprite e na escala
+    var offset_x = (140 / 2) * image_xscale; // Metade da largura do sprite, ajustada pela escala
+    with (instance_create_layer(x + offset_x, y, layer, obj_dmg)) {
+        ataque = 5;
+        dmg = ataque;
+        pai = other; // Define quem causou o dano
+    }
+    dano_causado = true;
+}
+
 
         // Voltar ao estado idle após o ataque
         if (image_index >= image_number - 1) {
@@ -85,8 +89,11 @@ switch (state) {
 
     case "following": {
         // Configuração de sprite de movimento
-        //sprite_index = spr_enemy_walk;
-        show_debug_message("Case following");
+        if(sprite_index == spr_aenebris_idle)
+		{
+		  sprite_index = spr_aenebris_walk;
+		}
+        //show_message("Case following");
 
         // Parar movimento horizontal se houver colisão com o jogador
         if (place_meeting(x + velh, y, target_player)) {
@@ -98,14 +105,18 @@ switch (state) {
 
     case "patrolling": {
         // Configuração de sprite de patrulha
-        //sprite_index = spr_enemy_walk;
-        show_debug_message("Case patrolling");
+		if(sprite_index != spr_aenebris_walk)
+		{
+		  sprite_index = spr_aenebris_walk;
+		}
+        
+        //show_message("Case patrolling");
         break;
     }
 
     case "idle": {
         // Configuração de sprite idle
-        //sprite_index = spr_enemy_idle;
+        sprite_index = spr_aenebris_idle;
         show_debug_message("Case idle");
         velh = 0;
         velv = 0;
@@ -127,6 +138,15 @@ switch (state) {
 			   state = "idle";
 			}
 		//}
+		if(vida_atual < 0)
+		{
+			state = "dead";
+		}
 		break;
+	}
+	case "dead":
+	{
+		
+	
 	}
 }

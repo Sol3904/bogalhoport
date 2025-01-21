@@ -8,6 +8,7 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":4,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":5,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_aenebris",
@@ -38,9 +39,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_aenebris_idle",
-    "path":"sprites/spr_aenebris_idle/spr_aenebris_idle.yy",
+    "name":"spr_aenebris_atk",
+    "path":"sprites/spr_aenebris_atk/spr_aenebris_atk.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_aenebris_walk",
+    "path":"sprites/spr_aenebris_walk/spr_aenebris_walk.yy",
+  },
   "visible":true,
 }

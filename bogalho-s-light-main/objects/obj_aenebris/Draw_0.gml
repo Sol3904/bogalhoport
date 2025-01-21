@@ -1,4 +1,5 @@
-draw_sprite(spr_aenebris_idle,image_index, x, y);
+//draw_sprite(spr_aenebris_idle,image_index, x, y);
+draw_self()
 
 //show_debug_message("Drawing obj_aenebris at: " + string(x) + ", " + string(y));
 show_debug_message("obj_aenebris posição - X: " + string(x) + ", Y: " + string(y));

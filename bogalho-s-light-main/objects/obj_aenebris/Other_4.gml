@@ -25,3 +25,7 @@ if (array_length(player_data.state_counts) < 7) {
 
 // Agora, inicialize qualquer outro dado ou lógica relacionada ao jogador
 show_debug_message("player_data inicializada corretamente.");
+
+
+
+audio_play_sound(sif,0,true)
