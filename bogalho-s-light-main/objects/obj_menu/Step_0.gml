@@ -53,7 +53,7 @@ if(keyboard_check_pressed(confirmButt))
 	
 	if(selected == 2) // Options
 	{
-		room_goto(Aenebris_testing)
+		room_goto(Dungeon)
 	}
 	
 	if(selected == 3) // Exit by default

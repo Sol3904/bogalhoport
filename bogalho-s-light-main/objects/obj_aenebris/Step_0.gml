@@ -138,7 +138,7 @@ switch (state) {
 			   state = "idle";
 			}
 		//}
-		if(vida_atual < 0)
+		if(vida_atual <= 0)
 		{
 			state = "dead";
 		}
@@ -146,7 +146,20 @@ switch (state) {
 	}
 	case "dead":
 	{
-		
-	
+		if(sprite_index != spr_aenebris_dead)
+		{
+			//reiniciar a animacao de hit
+			image_index = 0;
+			sprite_index = spr_aenebris_dead;
+		}
+		sprite_index = spr_aenebris_dead;
+		//morte real
+		if(image_index > image_number-1)
+		{
+			image_speed = 0;
+			image_alpha -= .01;
+			
+			if(image_alpha <= 0) instance_destroy();
+		}
 	}
 }
