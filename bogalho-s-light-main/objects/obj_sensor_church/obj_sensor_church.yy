@@ -8,8 +8,8 @@
   "name":"obj_sensor_church",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objetos",
-    "path":"folders/Objetos.yy",
+    "name":"sensores",
+    "path":"folders/Objetos/sensores.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -1,6 +1,5 @@
 function load_player_data() {
     var file_path = working_directory + "player_data.json";
-    
     // Tenta abrir o arquivo para leitura
     if (!file_exists(file_path)) {
         show_debug_message("Arquivo de salvamento não encontrado. Usando valores padrão.");

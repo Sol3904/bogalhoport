@@ -20,6 +20,7 @@
     {"$GMFolder":"","%Name":"Fontes","folderPath":"folders/Fontes.yy","name":"Fontes","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Linhas do tempo","folderPath":"folders/Linhas do tempo.yy","name":"Linhas do tempo","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Objetos","folderPath":"folders/Objetos.yy","name":"Objetos","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"sensores","folderPath":"folders/Objetos/sensores.yy","name":"sensores","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"inimigos","folderPath":"folders/Objetos/inimigos.yy","name":"inimigos","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Particle Systems","folderPath":"folders/Particle Systems.yy","name":"Particle Systems","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scripts","folderPath":"folders/Scripts.yy","name":"Scripts","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -50,7 +51,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.11.0.179",
+    "IDEVersion":"2024.8.1.171",
   },
   "name":"bogalho's light",
   "resources":[
@@ -65,6 +66,7 @@
     {"id":{"name":"obj_multigame","path":"objects/obj_multigame/obj_multigame.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_priest","path":"objects/obj_priest/obj_priest.yy",},},
+    {"id":{"name":"obj_sensor_aenebris","path":"objects/obj_sensor_aenebris/obj_sensor_aenebris.yy",},},
     {"id":{"name":"obj_sensor_church","path":"objects/obj_sensor_church/obj_sensor_church.yy",},},
     {"id":{"name":"obj_sensor_dungeon","path":"objects/obj_sensor_dungeon/obj_sensor_dungeon.yy",},},
     {"id":{"name":"obj_spectre","path":"objects/obj_spectre/obj_spectre.yy",},},
@@ -90,6 +92,7 @@
     {"id":{"name":"room_3","path":"sprites/room_3/room_3.yy",},},
     {"id":{"name":"s_cursor","path":"sprites/s_cursor/s_cursor.yy",},},
     {"id":{"name":"spr_aenebris_atk","path":"sprites/spr_aenebris_atk/spr_aenebris_atk.yy",},},
+    {"id":{"name":"spr_aenebris_bgr","path":"sprites/spr_aenebris_bgr/spr_aenebris_bgr.yy",},},
     {"id":{"name":"spr_aenebris_idle","path":"sprites/spr_aenebris_idle/spr_aenebris_idle.yy",},},
     {"id":{"name":"spr_aenebris_walk","path":"sprites/spr_aenebris_walk/spr_aenebris_walk.yy",},},
     {"id":{"name":"spr_background","path":"sprites/spr_background/spr_background.yy",},},
