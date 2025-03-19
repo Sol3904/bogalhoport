@@ -49,7 +49,7 @@ titleCol = c_white;
 gameTitle = "Bogalho's Light";
 
 // Size of the title
-titleSize = 3;
+titleSize = 1;
 
 
 // Button to move up the menu

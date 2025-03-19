@@ -28,4 +28,4 @@ draw_sprite(s_cursor, -1, x + cursorLevitate - cursWidth/2, y + selectLerp*spaci
 
 // Draw game title (at 10% of screen width and height, hence 0.1)
 draw_set_color(titleCol);
-draw_text_transformed(room_width*0.5, room_height*0.5 , gameTitle, titleSize, titleSize,0);
+draw_text_transformed(room_width*0.5, room_height*0.5 , gameTitle, 3, 4,0);
