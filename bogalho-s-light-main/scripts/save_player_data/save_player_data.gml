@@ -20,6 +20,16 @@ function save_player_data() {
 	  nome_da_sala = "Revive"
 	}
 	
+	if(room == Aenebris_testing)
+	{
+	  nome_da_sala = "Aenebris_testing"
+	}
+	
+	if(room == Dungeon)
+	{
+		nome_da_sala = "Dungeon"
+	}
+	
 	show_message(nome_da_sala)
 	
 	 // Adiciona o nome da sala ao objeto temporário
