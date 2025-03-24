@@ -56,7 +56,13 @@ if(keyboard_check_pressed(confirmButt))
 		room_goto(Dungeon)
 	}
 	
-	if(selected == 3) // Exit by default
+	if(selected == 3)
+	{
+	   show_message("WASD para Mover\nJ para Atacar\nK para deslizar\nEspaço para saltar\nY para salvar\nR para Reiniciar a sala\nM para apagar o save");
+
+	}
+	
+	if(selected == 4) // Exit by default
 	{
 		game_end();
 	}

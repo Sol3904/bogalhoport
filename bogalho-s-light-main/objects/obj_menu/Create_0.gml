@@ -8,7 +8,8 @@ global.data_loaded = false; // Dados ainda não carregados
 menu[0] = "Campaign";
 menu[1] = "Multiplayer";
 menu[2] = "Aenebris testing";
-menu[3] = "Exit";
+menu[3] = "Controls";
+menu[4] = "Exit";
 
 
 // cursorLevitate will be used to keep a variable that
