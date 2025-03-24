@@ -7,7 +7,7 @@ Relatório Técnico de Avaliação de Software/Hardware
 - Nome do Projeto: Bogalho’s Light
 - Tipo de Projeto: Software - Jogo Metroidvania
 - Data de Início:  30/6/2024
-- Data de Término:  ?????
+- Data de Término:  Em andamento
 - Equipe de Desenvolvimento: Aléxis Martins dos Santos
 - Responsável pelo Relatório: Aléxis Martins dos Santos
 - Data do Relatório: 20/12/2024
