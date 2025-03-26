@@ -240,4 +240,60 @@ switch (state) {
     }
 }
 
+for(var _i = 0; _i < 1000; _i++)
+			{
+				//Direita
+				if(!place_meeting(x + _i,y,obj_block))
+				{
+					x += _i
+					break
+				}
+				//Esquerda
+				if(!place_meeting(x - _i,y,obj_block))
+				{
+					x -= _i
+					break
+				}
+				//Cima
+				if(!place_meeting(x,y - _i,obj_block))
+				{
+					y -= _i
+					break
+				}
+				//Baixo
+				if(!place_meeting(x,y + _i,obj_block))
+				{
+					y += _i
+					break
+				}
+				//Topo direita
+				if(!place_meeting(x + _i,y - _i,obj_block))
+				{
+					x += _i
+					y -= _i
+					break
+				}
+				//Topo esquerda
+				if(!place_meeting(x - _i,y - _i,obj_block))
+				{
+					x -= _i
+					y -= _i
+					break
+				}
+				//Baixo direita
+				if(!place_meeting(x + _i,y + _i,obj_block))
+				{
+					x += _i
+					y += _i
+					break
+				}
+				//Baixo esquerda
+				if(!place_meeting(x - _i,y + _i,obj_block))
+				{
+					x -= _i
+					y += _i
+					break
+				}
+			}
+
 if(keyboard_check_pressed(ord("R")))room_restart();

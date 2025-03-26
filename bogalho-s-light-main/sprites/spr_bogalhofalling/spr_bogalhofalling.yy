@@ -1,10 +1,10 @@
 {
   "$GMSprite":"",
   "%Name":"spr_bogalhofalling",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":47,
   "bbox_left":16,
-  "bbox_right":35,
+  "bbox_right":36,
   "bbox_top":17,
   "collisionKind":1,
   "collisionTolerance":0,

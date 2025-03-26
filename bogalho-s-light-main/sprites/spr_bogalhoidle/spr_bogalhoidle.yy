@@ -1,7 +1,7 @@
 {
   "$GMSprite":"",
   "%Name":"spr_bogalhoidle",
-  "bboxMode":0,
+  "bboxMode":2,
   "bbox_bottom":47,
   "bbox_left":18,
   "bbox_right":36,
