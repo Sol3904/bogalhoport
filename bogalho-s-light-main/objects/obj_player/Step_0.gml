@@ -4,6 +4,7 @@
 var right, left, jump, attack, dash;
 var chao = place_meeting(x, y + 1, obj_block);
 
+//configuracao das acoes com os inputs
 right = keyboard_check(ord("D"));
 left = keyboard_check(ord("A"));
 jump = keyboard_check(vk_space);

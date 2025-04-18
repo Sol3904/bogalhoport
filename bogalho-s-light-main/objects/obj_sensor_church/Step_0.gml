@@ -15,7 +15,7 @@ var espaco = keyboard_check_released(ord("E"));
 // Se o jogador está na sala e pressionou a tecla "E", faz a transição de sala
 if (espaco) {
     // Fazer a transição para a nova sala
-    room_goto(Church);  // Substitua "Church" pela sala de destino
+    room_goto(Church);  
 } else {
     show_debug_message("Esperando para salvar e transitar de sala.");
 }

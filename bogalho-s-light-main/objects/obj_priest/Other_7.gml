@@ -7,6 +7,7 @@
     //image_index = image_number - 1; // Ensure it stays on the last frame
 //}
 
+//impedir que a animacao se repita
 if(state = "dead")
 {
 image_speed = 0;

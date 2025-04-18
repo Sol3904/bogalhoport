@@ -4,7 +4,7 @@ function save_player_data() {
     
 	nome_da_sala = "placeholder"
    
-
+	// verifica o nome da sala para guardar no save
     if(room == Intro)
     {
 	  nome_da_sala = "Intro"

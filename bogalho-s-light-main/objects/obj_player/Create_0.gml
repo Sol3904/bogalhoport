@@ -84,6 +84,8 @@ healthbar_height = 10; // Altura da barra de vida
 if (!variable_global_exists("initial_y")) {
     global.initial_y = y;
 }
+
+// visuais da barra de vida
 healthbar_x = (320 / 2) - (healthbar_width / 2);
 healthbar_y = global.initial_y - 100;
 

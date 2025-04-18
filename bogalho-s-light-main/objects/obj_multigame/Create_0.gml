@@ -1,6 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 
+//todas as configs do multiplayer, inputs, funcionamento, etc
+
 rollback_define_input(
 {
         left: [vk_left,ord("A")],
@@ -14,7 +16,9 @@ rollback_define_input(
 
 rollback_define_player(obj_isolde, "Instances");
 
+
+//false para multi, true para bot
 if (!rollback_join_game())
 {
-        rollback_create_game(2, false);
+        rollback_create_game(2, true);
 }

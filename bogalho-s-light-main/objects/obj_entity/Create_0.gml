@@ -1,4 +1,4 @@
-/// @description Inicialização do obj_entity
+/// este é o objeto base de todos os objetos do jogo
 max_vida = 1;
 vida_atual = max_vida;
 
