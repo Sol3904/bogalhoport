@@ -173,31 +173,31 @@ Término: 20/7/2024
 
 Fase 3: Desenvolvimento (Single-Player)
 Início: 21/7/2024
-Término: Em andamento
+Término: 30/3/2025
 
 Fase 4: Desenvolvimento do Multiplayer
 Início: 15/12/2024
-Término: Em andamento
+Término: 30/3/2025
 
 Fase 5: Testes e Otimização
 Início: 21/7/2024
-Término: Em andamento
+Término: 30/3/2025
 
 Fase 6: Implementação e Entrega
-Início: Pendente
-Término: Pendente
+Início: 16/3/2025
+Término: 30/3/2025
 
 7.2. Marcos Importantes 
 
 Conclusão da fase de requisitos: 10/7/2024
 
-Aprovação do Design: 20/7/2024
-Estrutura lógica e gráfica.
+Aprovação do design e arquitetura de gameplay: 20/07/2024
 
-Primeira Versão “Beta”: 28/3/2024
-Versão funcional single-player
-Multiplayer Implementado
-Integração com o GX.Games
+Versão Beta (single-player estável e multiplayer inicial): 15/02/2025
+
+Finalização de testes e otimizações: 15/03/2025
+
+Entrega da versão final (RC): 30/03/2025
 
 
 8. Anexos
